@@ -40,10 +40,10 @@ def sendemail():
     s.sendmail(sender, receivers, msg.as_string())
 
 count = 1
-while count < 5:
+while count < 10:
     try:
         sendemail()
     except smtplib.SMTPSenderRefused:
-        pass
+        count += 1
     else:
         break
