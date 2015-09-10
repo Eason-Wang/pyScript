@@ -10,13 +10,13 @@ from email.mime.text import MIMEText
 def sendemail():
     subject = ''
     receivers = []
-    sendlist = [('smtp.aliyun.com', 'atteam@aliyun.com'), ('smtp.sina.com', 'atteam_jk@sina.com'),  ('smtp.sina.cn', 'atteam@sina.cn'), ('smtp.qq.com', 'atteam_jk@foxmail.com')]
-    rannum = random.randint(0, 3)
-    host = sendlist[rannum][0]
-    sender = sendlist[rannum][1]
+    sendlist = [('smtp.aliyun.com', 'mail@aliyun.com'), ('smtp.sina.com', 'mail@sina.com'),  ('smtp.sina.cn', 'mail@sina.cn'), ('smtp.qq.com', 'mail@foxmail.com')]
+    someone = random.choice(sendlist)
+    host = someone[0]
+    sender = someone[1]
     port = 465
-    copyto = ['694101558@qq.com', '3759287@qq.com', '120359809@qq.com', '472945017@qq.com', '447768237@qq.com']
-    passwd = 'xiaowang2013'
+    copyto = ['10000@qq.com', '10001@qq.com', '10002@qq.com', '10003@qq.com', '10004@qq.com']
+    passwd = 'xxxx'
     #参数获取收件人
     try:
         opts, args = getopt.getopt(sys.argv[1:], 's:R:')
@@ -37,7 +37,7 @@ def sendemail():
     receivers = receivers + copyto
     s = smtplib.SMTP_SSL(host, port)
     s.login(sender, passwd)
-    s.sendmail(sender, receivers, msg.as_string())
+    s.sendemail(sender, receivers, msg.as_string())
 
 count = 1
 while count < 10:
